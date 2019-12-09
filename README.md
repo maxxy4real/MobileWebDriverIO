@@ -1,4 +1,4 @@
-Webdriver.io + Mocha automation test
+Appium, JavaScript, WebdriverIO & Mocha Automation Test
 ====================
 
 
@@ -12,7 +12,7 @@ run `npm test`
 navigate to the root folder and type the command below type
 
 allure generate [allure_output_dir] && allure open
-allure generate /Users/maxwellnwajei/Documents/chargedUp/android/chargedup_e2e_android/allure-results --clean && allure open
+allure generate /Users/XXXXX/Documents/chargedUp/android/chargedup_e2e_android/allure-results --clean && allure open
 
 Reports should open in a browser
 

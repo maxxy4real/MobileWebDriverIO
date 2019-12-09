@@ -6,7 +6,7 @@ beforeEach(function () {
     browser.timeouts('implicit', 3000);
 })
 
-describe("ANDROID END TO END TEST", function() {
+describe("STEPS TO RETURN BATTERY TEST", function() {
 
     it("01 - Forgot to return Battery? Keep the Battery more than 90 days? £30", function(done) {
         browser.isVisible("//android.widget.TextView[@text='Forgot to return your battery?']");
@@ -26,7 +26,6 @@ describe("ANDROID END TO END TEST", function() {
     it("04 - User taps RETURN", function(done) {
         browser.click("//android.widget.TextView[@text='RETURN']");
     });
-
 
     it("05 - User see How to return in 2 steps", function(done) {
         var step1 = "//android.widget.TextView[@text='Step 1']";
@@ -76,7 +75,6 @@ describe("ANDROID END TO END TEST", function() {
     it("10 - User verifies the Rent Timer Count", function(done) {
         var rent_timer = "#rent_timer_bg";
         browser.waitForExist(rent_timer, false);
-
     });
 
 });

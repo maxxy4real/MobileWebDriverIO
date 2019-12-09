@@ -4,11 +4,9 @@ var request = require("request");
 
 beforeEach(function () {
     browser.timeouts('implicit', 3000);
-
-    // console.log('New Test has started')
 })
 
-describe("ANDROID END TO END TEST", function() {
+describe("LOGIN TEST", function() {
 
     it("01 - Apps loads - home screen verified successfully", function(done) {
         console.log('Onboarding Test Started');
@@ -75,82 +73,80 @@ describe("ANDROID END TO END TEST", function() {
         browser.pause(2000);
     });
 
-    it("07 - Enter Incorrect OTP code", function(done) {
-        browser.setValue("#ed_otp_1", '578724');
-        browser.click("//android.widget.Button[@text='NEXT']");
-        var OTPErrorMsg1 = browser.getText("#snackbar_text");
-        console.log(OTPErrorMsg1);
-        // var OTPErrorMsg1 = browser.getText("#snackbar_text");
-        // expect(OTPErrorMsg1).to.equal('Please double-check the code you’ve entered matches the SMS we sent you');
-        // browser.pause(1000);
-    });
+    // it("06 - Enter Incorrect OTP code", function(done) {
+    //     browser.setValue("#ed_otp_1", '578724');
+    //     browser.click("//android.widget.Button[@text='NEXT']");
+    //     var OTPErrorMsg1 = browser.getText("#snackbar_text");
+    //     console.log(OTPErrorMsg1);
+    //     var OTPErrorMsg1 = browser.getText("#snackbar_text");
+    //     expect(OTPErrorMsg1).to.equal('Please double-check the code you’ve entered matches the SMS we sent you');
+    //     browser.pause(1000);
+    // });
 
-    it("08 - Wait for Timer count down to 0Secs and Verify Resend code is enabled", function() {
-        browser.waitUntil(function () {
-            return browser.getText("#txt_resend_code") === 'Resend code'
-            console.log(browser.getText("#txt_resend_code"));
-        }, 60000, 'Expected Resend code to be enabled');
-    });
+    // it("07 - Wait for Timer count down to 0Secs and Verify Resend code is enabled", function() {
+    //     browser.waitUntil(function () {
+    //         return browser.getText("#txt_resend_code") === 'Resend code'
+    //         console.log(browser.getText("#txt_resend_code"));
+    //     }, 60000, 'Expected Resend code to be enabled');
+    // });
 
 
-    it("09 - Enter SMS verification code", function(done) {
+    it("08 - Enter SMS verification code", function(done) {
         browser.setValue("#ed_otp_1", '666666');
         browser.click("//android.widget.Button[@text='NEXT']");
         browser.pause(1000);
     });
 
-    // it("10 - User sees notification - which network are you on?", function(done) {
+    // it("User sees notification - which network are you on?", function(done) {
     //     browser.isVisible("//android.widget.TextView[@text='Which network are you on?']");
     //     browser.isVisible("//android.widget.TextView[@text='We need to know your mobile network to show you relevant offers.']");
     //     browser.click("//android.widget.Button[@text='ALLOW MOBILE ACCESS']");
     // });
     //
-    // it("11 - Allow chargedUp to access photos, media and other files", function(done) {
+    // it("Allow chargedUp to access photos, media and other files", function(done) {
     //     browser.click("//android.widget.Button[@text='ALLOW']");
     //     console.log('Access to device authorized by the user');
     // });
 
-    it("12 - Rent a battery", function(done) {
+    it("09 - Rent a battery", function(done) {
         browser.click("//android.widget.Button[@text='RENT BATTERY NOW']");
         browser.pause(2000);
     });
 
-    // it("13 - Allow chargedUp to access photos, media and other files", function(done) {
+    // it("Allow chargedUp to access photos, media and other files", function(done) {
     //     browser.click("//android.widget.Button[@text='ALLOW']");
     //     browser.pause(1000);
     //     browser.click("//android.widget.Button[@text='ALLOW']");
     //     console.log('Access to device authorized by the user');
     // });
 
-    it("14 - Verify label - scan QR code", function(done) {
+    it("10 - Verify label - scan QR code", function(done) {
         var ScanCode = browser.getText("//android.widget.TextView[@text='You can find QR code here']");
         expect(ScanCode).to.equal('You can find QR code here');
     });
 
-    it("15 Verify label - No QR code detected", function(done) {
+    it("11 - Verify label - No QR code detected", function(done) {
         var NoCodeDetected = browser.getText("//android.widget.TextView[@text='No QR code detected']");
         NoCodeDetected.should.equal('No QR code detected');
     });
 
-    it("16 - User Close the scan camera", function(done) {
+    it("12 - User Close the scan camera", function(done) {
         browser.click("#imgV_close");
         browser.pause(1000);
     });
 
-    it("16 - And I tap the NAV Icon", function(done) {
+    it("13 - And I tap the NAV Icon", function(done) {
         browser.click("#nav_icon");
-        browser.pause(1000);
     });
 
-    it("16 - And I tap the Settings", function(done) {
+    it("14 - And I tap the Settings", function(done) {
         browser.click("#nav_icon");
         browser.click("//android.widget.TextView[@text='Settings']");
-        browser.pause(1000);
     });
 
-    it("16 - And I tap Sign Out", function(done) {
+    it("15 - And I tap Sign Out", function(done) {
         browser.click("//android.widget.Button[@text='SIGN OUT']");
-        browser.pause(3000);
+        browser.pause(2000);
     });
 
     it("16 - And I see Alert title - Are you sure you want to sign out", function(done) {
@@ -168,13 +164,12 @@ describe("ANDROID END TO END TEST", function() {
         browser.waitForExist(cancelBtn, false);
     });
 
-    it("16 - And User is Logged Out", function(done) {
+    it("17 - And User is Logged Out", function(done) {
         browser.click("//android.widget.Button[@text='SIGN OUT']");
-        browser.pause(1000);
     });
 
 
-    // it("16 - Enter incorrect station ID", function(done) {
+    // it("Enter incorrect station ID", function(done) {
     //     browser.click("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout[3]/android.widget.LinearLayout/android.widget.ImageView[1]");  //works
     //     browser.setValue("//android.widget.EditText[@text='Enter Station ID']", '555006');
     //     browser.click("//android.widget.TextView[@text='UNLOCK']");
@@ -185,7 +180,7 @@ describe("ANDROID END TO END TEST", function() {
     //
     // });
     //
-    // it("17 - Error message displayed - station not found", function(done) {
+    // it("Error message displayed - station not found", function(done) {
     //     browser.click("//android.widget.Button[@text='YES']");
     //     var error = browser.getText("//android.widget.TextView[@text='Station 555006 not found']");
     //     expect(error).to.equal('Station 555006 not found');

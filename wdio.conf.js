@@ -36,7 +36,7 @@ exports.config = {
         './tests/04_start_rental_test.js',
         './tests/05_steps_to_return_test.js',
         './tests/06_intercom_chat_test.js'
-        // './tests/**/signup_test.js'
+        // // './tests/**/signup_test.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -235,8 +235,11 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    //onPrepare: function (config, capabilities) {
-    //},
+    onPrepare: function (config, capabilities) {
+        console.log('Calling before ALL')
+        const  del = require('del');
+        del(['allure-results', 'errorShots', 'reports']);
+    },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -245,8 +248,6 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
-         const  del = require('del');
-         del(['allure-results', 'errorShots', 'reports']);
         assert = require('chai').assert;
         expect = require('chai').expect;
         should = require('chai').should();
@@ -261,7 +262,7 @@ exports.config = {
         //
         // });
 
-        console.log('Calling before Session block')
+        console.log('Calling before each Test')
      },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -270,10 +271,12 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     // before: function (capabilities, specs) {
+    //     const  del = require('del');
+    //     del(['allure-results', 'errorShots', 'reports']);
     //     assert = require('chai').assert;
     //     expect = require('chai').expect;
     //     should = require('chai').should();
-    //     console.log('Calling session block')
+    //
     // },
     /**
      * Runs before a WebdriverIO command gets executed.

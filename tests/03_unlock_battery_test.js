@@ -6,7 +6,7 @@ beforeEach(function () {
     browser.timeouts('implicit', 3000);
 })
 
-describe("ANDROID END TO END TEST", function() {
+describe("UNLOCK BATTERY TEST", function() {
 
     it("01 - Find Charging Station", function(done) {
         browser.click("//android.widget.Button[@text='FIND CHARGING STATION']");

@@ -6,7 +6,7 @@ beforeEach(function () {
     browser.timeouts('implicit', 3000);
 })
 
-describe("ANDROID END TO END TEST", function() {
+describe("START RENTAL TEST", function() {
 
     it("01 - Find Charging Station", function(done) {
         browser.click("//android.widget.Button[@text='FIND CHARGING STATION']");
@@ -74,7 +74,6 @@ describe("ANDROID END TO END TEST", function() {
 
         var payment_type = browser.getText("//android.widget.TextView[@text='/hour']");
         expect(payment_type).to.equal('/hour');
-
     });
 
     it("10 - User select Pay as you go", function(done) {

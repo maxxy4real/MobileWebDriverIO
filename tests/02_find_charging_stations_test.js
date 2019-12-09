@@ -6,7 +6,7 @@ beforeEach(function () {
     browser.timeouts('implicit', 3000);
 })
 
-describe("ANDROID END TO END TEST", function() {
+describe("FIND CHARGING STATION TEST", function() {
 
     it("01 - Apps loads - home screen verified successfully", function(done) {
         console.log('Onboarding Test Started');
@@ -34,12 +34,12 @@ describe("ANDROID END TO END TEST", function() {
         browser.pause(1000);
     });
 
-    it("12 - Find Charging Station", function(done) {
+    it("04 - Find Charging Station", function(done) {
         browser.click("//android.widget.Button[@text='FIND CHARGING STATION']");
         browser.pause(2000);
     });
 
-    it("04 - Waiting for Map to Appear", function() {
+    it("05 - Waiting for Map to Appear", function() {
         browser.waitUntil(function () {
             return browser.isEnabled("#refreshBtn")
         }, 60000, 'Map Failed to appear after 60 seconds');
