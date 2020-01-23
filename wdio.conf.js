@@ -4,6 +4,7 @@ const video = require('wdio-video-reporter');
 var request = require("request");
 
 
+
 // if(process.env.server === 'prod'){
 //     baseUrl = 'https://www.google.com';
 //     }else{
@@ -28,15 +29,10 @@ exports.config = {
     //
 
     specs: [
-        // './tests/**/*.js'
-        //  './tests/**/01_login_test.js',
         './tests/01_login_test.js',
-        './tests/02_find_charging_stations_test.js',
-        './tests/03_unlock_battery_test.js',
-        './tests/04_start_rental_test.js',
-        './tests/05_steps_to_return_test.js',
-        './tests/06_intercom_chat_test.js'
-        // // './tests/**/signup_test.js'
+        './tests/02_start_rental_test.js',
+        './tests/03_intercom_chat_test.js',
+        './tests/04_signup_test.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -92,17 +88,15 @@ exports.config = {
             maxInstances: 5,
             platformName: "Android",
             platformVersion : '9.0',
-             // deviceName : 'samsung1',
-            deviceName : 'Huwai P20 lite',
-             // deviceName : 'Honor 10 lite',
-            appiumVecrsion : '1.15.1',
-             // app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-debug.apk',
-            app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-release.apk',
+            deviceName : 'Galaxy S9+',
+            appiumVesion : '1.15.1',
+             // app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-dev-release.apk',
+             app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-prod-release.apk',
             automationName: 'UiAutomator2',
-            noReset: 'true',
-            // newCommandTimeout: 0,
-            autoAcceptAlerts: 'true',
-             sessionOverride: 'true'
+            noReset: 'true',  //Do not stop app, do not clear app data, and do not uninstall apk.
+            // newCommandTimeout: 0, //How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
+            autoAcceptAlerts: 'true', //Accept all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.
+            sessionOverride: 'true',
         },
     ],
 
@@ -236,8 +230,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     onPrepare: function (config, capabilities) {
-        console.log('Calling before ALL')
+        console.log('Preparing to run test *** Deleting all previous reports ***')
         const  del = require('del');
+        // del(['errorShots', 'reports']);
         del(['allure-results', 'errorShots', 'reports']);
     },
     /**
@@ -251,6 +246,8 @@ exports.config = {
         assert = require('chai').assert;
         expect = require('chai').expect;
         should = require('chai').should();
+        // localStorage.clear();
+        // browser.resetApp();
 
         // // Deleting Request
         // var options = { method: 'DELETE',
@@ -262,8 +259,11 @@ exports.config = {
         //
         // });
 
-        console.log('Calling before each Test')
-     },
+        console.log('Calling before each Test');
+        // const adb = ADB.createADB();
+        // console.log(adb.getPIDsByName('com.android.phone'));
+        // browser.shell(["cp", "-rp", "/sdcard/Android/data/com.chargedup.largestation.dev_backup", "/sdcard/Android/data/com.chargedup.largestation.dev"])
+},
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -320,14 +320,15 @@ exports.config = {
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
      */
-    // afterSuite: function (suite) {
-    //     console.log('First Test is completed running the second one')
-    //     browser.quit
-    //
-    //     if(browser !== null) {
-    //         return browser;
-    //     }
-    // },
+    afterSuite: function (suite) {
+        console.log('First Test is completed running the second one');
+        // browser.resetApp();
+        // browser.quit
+        //
+        // if(browser !== null) {
+        //     return browser;
+        // }
+    },
     
     /**
      * Runs after a WebdriverIO command gets executed

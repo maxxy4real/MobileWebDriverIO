@@ -6,7 +6,7 @@ beforeEach(function () {
     browser.timeouts('implicit', 3000);
 })
 
-describe("CHAT WITH INTERCOM TEST", function() {
+describe("03 - CHAT WITH INTERCOM TEST", function() {
     it("01 - Forgot to return Battery? Keep the Battery more than 90 days? £30", function(done) {
         browser.isVisible("//android.widget.TextView[@text='Forgot to return your battery?']");
         browser.isVisible("//android.widget.TextView[@text='We cap your spending daily, no stress']");
@@ -23,13 +23,14 @@ describe("CHAT WITH INTERCOM TEST", function() {
 
     it("04 - Screen opens up intercom Messaging platform", function(done) {
         browser.isExisting("#intercom_collapsing_team_bio");
+        browser.pause(1000);
     });
 
     it("05 - Start a conversation", function(done) {
+        browser.click("#new_conversation_button");
         browser.click("#input_text");
         browser.setValue("#input_text", 'This is an automated, please acknowledge. Thanks ');
         browser.hideDeviceKeyboard(); // taps outside to hide keyboard per default
-        // browser.click("#send_button").click();
     });
 
     it("06 - User closes intercom Messaging platform", function(done) {
@@ -43,6 +44,7 @@ describe("CHAT WITH INTERCOM TEST", function() {
     it("08 - And I tap the Settings", function(done) {
         browser.click("#nav_icon");
         browser.click("//android.widget.TextView[@text='Settings']");
+        browser.pause(2000);
     });
 
     it("09 - And I tap Sign Out", function(done) {

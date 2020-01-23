@@ -2,4 +2,6 @@ allure-report
 allure-results
 errorShots
 reports
-tests/appium.log
+screenshots
+appium.log
+.idea/

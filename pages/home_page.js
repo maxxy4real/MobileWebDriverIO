@@ -1,5 +1,6 @@
 class home_page {
-    get loginBtn() {return $("//android.widget.Button[@text='GET CHARGEDUP']");
+    get loginBtn() {
+        return $("//android.widget.Button[@text='GET CHARGEDUP']");
     }
 
     get signupBtn() {return $("//android.widget.Button[@text='SIGN UP']");
