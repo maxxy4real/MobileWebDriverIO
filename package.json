@@ -33,6 +33,7 @@
     "webdriverio": "^4.13.2"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "request": "^2.88.0"
   }
 }

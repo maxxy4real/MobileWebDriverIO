@@ -102,7 +102,7 @@ describe("01 - LOGIN TEST", function() {
     });
 
     it("10 - Allow chargedUp to access photos, media and other files", function(done) {
-        browser.click("//android.widget.Button[@text='Allow']");
+        browser.click("//android.widget.Button[@text='ALLOW']");
     });
 
 });

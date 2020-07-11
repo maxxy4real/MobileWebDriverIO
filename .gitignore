@@ -5,3 +5,4 @@ reports
 screenshots
 appium.log
 .idea/
+node_modules

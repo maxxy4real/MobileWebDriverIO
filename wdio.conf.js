@@ -29,9 +29,9 @@ exports.config = {
     //
 
     specs: [
-        './tests/01_login_test.js',
-        './tests/02_start_rental_test.js',
-        './tests/03_intercom_chat_test.js',
+        // './tests/01_login_test.js',
+        // './tests/02_start_rental_test.js',
+        // './tests/03_intercom_chat_test.js',
         './tests/04_signup_test.js'
     ],
     // Patterns to exclude.
@@ -85,13 +85,15 @@ exports.config = {
         //     app: '/Users/maxwellnwajei/Library/Developer/Xcode/DerivedData/ChargedUp-ebvlfpjeqfvdmtawusmggmgvoxcl/Build/Products/Debug-iphonesimulator/ChargedUp.app'
         // },
 
-            maxInstances: 5,
+            maxInstances: 1,
             platformName: "Android",
-            platformVersion : '9.0',
-            deviceName : 'Galaxy S9+',
-            appiumVesion : '1.15.1',
-             // app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-dev-release.apk',
-             app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-prod-release.apk',
+            // platformVersion : '9.0',
+            // deviceName : 'Honor 10 Lite',
+             platformVersion : '9.0',
+             deviceName : 'maxDevice01',
+            appiumVersion : '1.15.1',
+             app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-debug.apk',
+             // app: '/Users/maxwellnwajei/Documents/ChargedUp/android/app-prod-release.apk',
             automationName: 'UiAutomator2',
             noReset: 'true',  //Do not stop app, do not clear app data, and do not uninstall apk.
             // newCommandTimeout: 0, //How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session

@@ -103,12 +103,12 @@ describe("04 - Sign Up Test", function() {
         browser.isVisible("//android.widget.TextView[@text='Which network are you on?']");
         browser.isVisible("//android.widget.TextView[@text='We need to know your mobile network to show you relevant offers.']");
         browser.click("//android.widget.Button[@text='ALLOW MOBILE ACCESS']");
-        browser.pause(2000);
+        browser.pause(3000);
     });
 
     it("09 - Allow ChargedUp to make and manage phone calls?", function(done) {
-        browser.click("//android.widget.Button[@text='Allow']");
-        // browser.click("#permission_allow_button");
+        browser.click("//android.widget.Button[@text='allow']");
+        browser.click("#permission_allow_button");
     });
 
     it("10 - Find Charging Station", function(done) {

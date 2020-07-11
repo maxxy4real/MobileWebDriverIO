@@ -1,8 +1,10 @@
 class common_page {
-    get loginBtn() {return $("//android.widget.Button[@text='LOG IN']");
+    get loginBtn() {
+        return $("//android.widget.Button[@text='LOG IN']");
     }
 
-    get signupBtn() {return $("//android.widget.Button[@text='SIGN UP']");
+    get signupBtn() {
+        return $("//android.widget.Button[@text='SIGN UP']");
     }
 
     clickLoginBtn() {
